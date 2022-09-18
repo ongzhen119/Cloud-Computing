@@ -1,0 +1,19 @@
+#!/bin/bash
+sudo yum update -y
+sudo yum install git -y
+sudo yum install mariadb -y
+git clone https://github.com/ongzhen119/aws-live
+cd aws-live
+sudo python3 -m pip install flask boto3 pymysql
+sudo rm -rf config.py
+sudo touch config.py
+echo customhost = \"database-hrms.cntdwxoqg2np.us-east-1.rds.amazonaws.com\" | sudo tee -a config.py
+echo customuser = \"aws_user\" | sudo tee -a config.py
+echo custompass = \"Bait3273\" | sudo tee -a config.py
+echo customdb = \"employee\" | sudo tee -a config.py
+echo custombucket = \"ongzhenchunbucket\" | sudo tee -a config.py
+echo customregion = \"us-east-1\" | sudo tee -a config.py
+echo AWS_SERVER_PUBLIC_KEY=\"ASIAUJ3EK3X5TGH5D225\" | sudo tee -a config.py
+echo AWS_SERVER_SECRET_KEY=\"K6EetWz8Ravt9+Eq5KhC1unlBBgtXnANmq6/7sHP\" | sudo tee -a config.py
+echo AWS_SESSION_TOKEN=\"FwoGZXIvYXdzEJL//////////wEaDGcy/boM/yXhk66JqSLPAdbQT8U98osHUZYlZJIZvftpr6pz1Dl9O6KOS1FD2EMaBXb1dDH9yyBuCJqS0S3q2yOBGnnv+DH672NUKV2fiqZyCYzFXR/Dpk3Fk/mbZqT3prsIG1RuPjHMGPA1iGNA0hID/j5xeuYiqGiB+dmgstlb9edVZu0wUe70pbEcPjrxluwTY7CMS981IKnQlYu+Y1Zgy+nxQaRSChaEn4oogobq1j/dtu9EsHdzZjsktfBNd2R/1qaDJdiP92RfU/SQY5urS51v5Fvq/Vv/BcofsCiVo5uZBjItR+qFjtRE8gu0hBGstEfrktkJXs6p0Ilx3L7KWaFZhP7npmswJ3gjrKMCat2+\" | sudo tee -a config.py
+sudo python3 EmpApp.py
