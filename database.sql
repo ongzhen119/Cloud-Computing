@@ -8,5 +8,5 @@ CREATE TABLE employee (
     last_name VARCHAR(100),
     pri_skill VARCHAR(100),
     location VARCHAR(100),
-    image_url VARCHAR(100)
+    profile_pic VARCHAR(100)
 );
