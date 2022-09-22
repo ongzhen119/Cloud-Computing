@@ -105,7 +105,7 @@ def apiadd():
             try:
                 with db_conn.cursor() as cursor:
                     cursor.execute(
-                        "UPDATE employee SET image_url = %s WHERE emp_id = %s", (emp_image_file_name_in_s3, emp_id))
+                        "UPDATE employee SET profile_pic = %s WHERE emp_id = %s", (emp_image_file_name_in_s3, emp_id))
                     db_conn.commit()
             except Exception as e:
                 return {"status": -1, "error": str(e)}

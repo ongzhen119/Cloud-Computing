@@ -7,6 +7,16 @@ function toggle_btn(element, state) {
         element.html(`<i class="fa-solid fa-plus"></i>&nbsp;Add`);
     }
 }
+function previewImg(png) {
+    alert(png);
+}
+var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  };
 
 function addEmp() {
     toggle_btn($("#addBtn"), false);
@@ -15,7 +25,7 @@ function addEmp() {
     let first_name = $("input[name=first_name]").val();
     let last_name = $("input[name=last_name]").val();
     let pri_skill = $("input[name=pri_skill]").val();
-    let location = $("input[name=location]").val();
+    let location = $("textarea[name=location]").val();
 
     if (typeof emp_id !== "string" || emp_id.trim() === "") {
         error_prompt("Employee ID cannot be empty");
@@ -30,6 +40,7 @@ function addEmp() {
     form_data.append("pri_skill", pri_skill);
     form_data.append("location", location);
     if ($("input[name=emp_image]")[0].files.length > 0) {
+        console.log("hi");
         form_data.append(
             "emp_image_file",
             $("input[name=emp_image]")[0].files[0]

@@ -1,4 +1,5 @@
 $(function () {
+
     $.ajax({
         url: "/api/get",
         method: "GET",
@@ -30,7 +31,7 @@ $(function () {
                                                 data.location
                                             }</td>
                                             <td>
-                                                <button class="btn btn-primary" onclick="viewEmpDetails(event)"><i class="fa-solid fa-eye"></i>&nbsp;View</button>
+                                                <button id="${data.emp_id}"class="btn btn-primary" onclick="viewEmpDetails(event)"><i class="fa-solid fa-eye"></i>&nbsp;View</button>
                                                 <a href="/edit/${
                                                     data.emp_id
                                                 }"><button class="btn btn-success"><i
@@ -44,7 +45,10 @@ $(function () {
             console.error(errorThrown);
         },
     });
+    $('#emptable').DataTable();
 });
+
+
 
 function deleteOnClick(evt) {
     let emp_id = $(evt.target).parent().parent().children()[1].innerHTML;
@@ -105,10 +109,10 @@ function viewEmpDetails(evt) {
             const dashIfEmpty = (str) =>
                 typeof str === "string" && str.trim() !== "" ? str : "-";
 
-            let { first_name, image_url, last_name, location, pri_skill } =
+            let { first_name, last_name, location, pri_skill, profile_pic } =
                 data.data;
-            if (image_url) {
-                $("#detailsEmpImg").prop("src", `https://loozikang-employee.s3.amazonaws.com/${image_url}`);
+            if (profile_pic) {
+                $("#detailsEmpImg").prop("src", `https://ongzhenchun-empsbucket.s3.amazonaws.com/${profile_pic}`);
             } else {
                 $("#detailsEmpImg").prop("src", `/static/profile.png`);
             }

@@ -15,26 +15,38 @@
 
             </div>
             <form onsubmit="event.preventDefault(); return false;">
-                <div class="mb-3">
-                    <label class="form-label">Employee ID</label>
-                    <input name="emp_id" type="text" disabled="true" value="{{ emp_id }}" class="form-control">
+                
+                <div class="form-floating mb-3">
+                    <input name="emp_id" type="number" disabled="true" value="{{ emp_id }}" class="form-control" id="floatingInput" placeholder="1">
+                    <label for="floatingInput">Employee ID</label>
                 </div>
+               
                 <div class="mb-3">
-                    <label class="form-label">First Name</label>
-                    <input name="first_name" type="text" class="form-control">
+                    <div class="row g-2">
+                        <div class="col-md">
+                          <div class="form-floating">
+                            <input name="first_name" type="text" class="form-control" id="floatingInputGrid" placeholder="name@example.com" value="">
+                            <label for="floatingInputGrid">First name</label>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-floating">
+                            <input name="last_name" type="text" class="form-control" id="floatingInputGrid" placeholder="name@example.com" value="">
+                            <label for="floatingInputGrid">Last name</label>
+                          </div>
+                        </div>
+                      </div>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Last Name</label>
-                    <input name="last_name" type="text" class="form-control">
+    
+                <div class="form-floating mb-3">
+                    <input name="pri_skill" type="text" class="form-control" id="floatingInput" placeholder=" " value="">
+                    <label for="floatingInput">Primary Skill</label>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Primary skill</label>
-                    <input name="pri_skill" type="text" class="form-control">
+                <div class="form-floating mb-3">
+                  <textarea name="location" type="text" class="form-control" placeholder="Your address" id="floatingTextarea"></textarea>
+                  <label for="floatingTextarea">Address</label>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Location</label>
-                    <input name="location" type="text" class="form-control">
-                </div>
+    
                 <div class="mb-3">
                     <label class="form-label">Employee Image (.png)</label>
                     <input name="emp_image" class="form-control" type="file" accept=".png">

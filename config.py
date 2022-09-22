@@ -1,6 +1,6 @@
-customhost = "hrms-database.cn08gjbr6jy9.us-east-1.rds.amazonaws.com"
+customhost = "emp-database.cntdwxoqg2np.us-east-1.rds.amazonaws.com"
 customuser = "admin"
 custompass = "admin123"
 customdb = "employee"
-custombucket = "ongzhenchun-bucket"
+custombucket = "ongzhenchun-empsbucket"
 customregion = "us-east-1"

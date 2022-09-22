@@ -38,7 +38,7 @@ function editEmp() {
     let first_name = $("input[name=first_name]").val();
     let last_name = $("input[name=last_name]").val();
     let pri_skill = $("input[name=pri_skill]").val();
-    let location = $("input[name=location]").val();
+    let location = $("textarea[name=location]").val();
 
     var form_data = new FormData();
     form_data.append("emp_id", emp_id);
@@ -48,7 +48,7 @@ function editEmp() {
     form_data.append("location", location);
     if ($("input[name=emp_image]")[0].files.length > 0) {
         form_data.append(
-            "emp_image_file",
+            "profile_pic",
             $("input[name=emp_image]")[0].files[0]
         );
     }
