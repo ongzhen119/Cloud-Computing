@@ -1,10 +1,9 @@
 {% extends "layout.html" %}
 {% block body %}
 <div class="container">
-    <div class="pt-3 px-3">
-        {{ msg_prompt|safe }}
-    </div>
-    <div style="float:right;" class="p-3">
+    
+
+    <!-- <div style="float:right;" class="p-3">
         <a href="/view" style="text-decoration: none">
             <button class="btn btn-primary"><i class="fa-solid fa-arrows-rotate"></i></button>
         </a>
@@ -12,17 +11,21 @@
             <button class="btn btn-success"><i class="fa-solid fa-plus"></i>&nbsp;Add
                 Employee</button>
         </a>
+    </div> -->
+    <div class="d-flex justify-content-center" >
+        <h1>Employees Information</h1>
     </div>
-    <div class="p-3">
+    <div class="p-3 card">
         <table id="emptable" class="dataTable">
             <thead class="table-primary">
                 <tr>
                     <th>No.</th>
-                    <th>Employee ID</th>
+                    <th>ID</th>
                     <th>Employee Name</th>
-                    <th>Primary Skill</th>
-                    <th>Location</th>
-                    <th>Actions</th>
+                    <th>Contact Number</th>
+                    <th>Office Branch</th>
+                    <th>Salary</th>
+                    <th>Profile | Edit | Remove</th>
                 </tr>
             </thead>
             <tbody>
@@ -70,7 +73,7 @@
                     </button>
                 </div>
                 <div class="modal-body" id="deleteMsg">
-                    Delete employee with ID "EMP001" ?
+                    Remove employee with ID "EMP001" ?
                 </div>
                 <div class="modal-footer">
                     <button onclick='$("#deleteModal").modal("hide")' type="button" class="btn btn-secondary"
@@ -85,8 +88,10 @@
     <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Employee Details</h5>
+                <div class="modal-header"><h4 class="modal-title" id="exampleModalLabel">Profile</h4>
+                    
+                    
+                
                     <button onclick='$("#detailsModal").modal("hide")' type="button" class="close" data-dismiss="modal"
                         aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -100,19 +105,20 @@
                         style="display:none;display:grid; grid-template-columns: 1fr 2fr; column-gap: 10px;">
                         <div>
                             <img style="max-width:160x;max-height:160px;width: auto;height: auto;" id="detailsEmpImg"
-                                alt="Employee Picture" src="/static/profile.png" />
+                                alt="Employee Picture" src="../static/profile.png" />
                         </div>
                         <div style="display: grid; row-gap:10px;grid-template-rows: auto auto 1fr;">
-                            <div>
-                                <div style="font-weight: bold">Employee Name</div>
-                                <div id="detailsEmpName" class="custom-text-wrap">Kano</div>
-                                <div id="detailsEmpID" class="custom-text-wrap" style="color: grey; font-style: italic">KID010802</div>
-                            </div>
+                                <div class="d-flex justify-content-start">
+                                    <h5 id="detailsEmpName" class="custom-text-wrap">Kano</h5>
+                                    <p id="detailsEmpID" class="font-monospace mx-2" style="color: grey; font-style: italic">KID010802</p>
+                                </div>
                             <div style="display: grid; grid-template-columns: 1fr 1fr">
-                                <div style="font-weight: bold">Primary Skill</div>
-                                <div style="font-weight: bold">Location</div>
-                                <div class="custom-text-wrap" id="detailsEmpPriSkill">Code</div>
-                                <div class="custom-text-wrap" id="detailsEmpLocation">Penang</div>
+                                <div style="font-weight: bold">Contact Number</div>
+                                <div style="font-weight: bold">Office Branch</div>
+                                <div class="custom-text-wrap" id="detailsEmpContact">Code</div>
+                                <div readonly id="detailsEmpOffice" style="height: 100px" class="border-light p-2 disabled">
+                                </div>
+                                <div class="custom-text-wrap" id="detailsEmpSalary">RM</div>
                             </div>
                         </div>
                     </div>
@@ -123,6 +129,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="pt-3 px-3">
+        {{ msg_prompt|safe }}
     </div>
 </div>
 {% endblock %}

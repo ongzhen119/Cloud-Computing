@@ -1,6 +1,6 @@
-customhost = "emp-database.cntdwxoqg2np.us-east-1.rds.amazonaws.com"
+customhost = "ems-database.c9bsyiia4gxk.us-east-1.rds.amazonaws.com"
 customuser = "admin"
 custompass = "admin123"
 customdb = "employee"
-custombucket = "ongzhenchun-empsbucket"
+custombucket = "emp-image-ongzhenchun"
 customregion = "us-east-1"

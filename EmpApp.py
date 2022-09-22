@@ -36,6 +36,7 @@ def apiget():
         db=customdb
     ) as db_conn:
         emp_id = request.args.get('empid')
+        print("hi")
         if emp_id is None:
             with db_conn.cursor(pymysql.cursors.DictCursor) as cursor:
                 sql = "SELECT * FROM employee"
@@ -62,21 +63,35 @@ def apiadd():
         password=custompass,
         db=customdb
     ) as db_conn:
-        emp_id = request.form.get('emp_id')
+        # emp_id = request.form.get('emp_id')
         first_name = request.form.get('first_name')
         last_name = request.form.get('last_name')
-        pri_skill = request.form.get('pri_skill')
-        location = request.form.get('location')
+        contact_num = request.form.get('contact_num')
+        salary = request.form.get('salary')
+        office = request.form.get('office')
         emp_image_file = request.files.get('emp_image_file')
 
-        insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, null)"
+        insert_sql = "INSERT INTO employee(first_name, last_name, salary, contact_num, office, profile_pic) VALUES (%s, %s, %s, %s, %s, null)"
         try:
             with db_conn.cursor() as cursor:
-                cursor.execute(insert_sql, (emp_id, first_name,
-                                            last_name, pri_skill, location))
-                db_conn.commit()
+                cursor.execute(insert_sql, (first_name, last_name, contact_num, salary, office))
+                # result = cursor.fetchone()
+        
+                result = db_conn.commit()
+                
         except Exception as e:
             return {"status": -1, "error": str(e)}
+
+        lastID_sql = "SELECT LAST_INSERT_ID();"
+        try:
+            with db_conn.cursor() as cursor:
+                cursor.execute(lastID_sql)
+                result = cursor.fetchone()
+                emp_id = result[0]
+               
+        except Exception as e:
+                return {"status": -1, "error": str(e)}
+
 
         if emp_image_file is not None:
             object_url = ""
@@ -124,15 +139,16 @@ def apiedit(emp_id):
     ) as db_conn:
         first_name = request.form.get('first_name')
         last_name = request.form.get('last_name')
-        pri_skill = request.form.get('pri_skill')
-        location = request.form.get('location')
+        contact_num = request.form.get('contact_num')
+        salary = request.form.get('salary')
+        office = request.form.get('office')
         emp_image_file = request.files.get('emp_image_file')
 
-        update_sql = "UPDATE employee SET first_name=%s, last_name=%s, pri_skill=%s, location=%s WHERE emp_id = %s"
+        update_sql = "UPDATE employee SET first_name=%s, last_name=%s, contact_num=%s, salary=%s, office=%s WHERE emp_id = %s"
         try:
             with db_conn.cursor() as cursor:
                 cursor.execute(update_sql, (first_name,
-                                            last_name, pri_skill, location, emp_id))
+                                            last_name, contact_num, salary, office, emp_id))
                 db_conn.commit()
         except Exception as e:
             return {"status": -1, "error": str(e)}
