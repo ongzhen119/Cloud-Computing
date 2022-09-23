@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
 {% block body %}
 <div class="container">
-    <div class="p-3">
+    <div class="p-2">
         <a href="/view"><button type="button" class="btn btn-outline-secondary"><i
                     class="fa-solid fa-left-long"></i>&nbsp;Back</button></a>
-        <h1 class="d-flex justify-content-center">Edit employee</h1>
+        <h1 class="d-flex justify-content-center mb-2">Edit Employee</h1>
         <div id="loading_bar" style="text-align: center">
             <i class="fas fa-spinner fa-spin"></i>&nbsp;Loading...
         </div>
@@ -73,8 +73,7 @@
               </div>
             </div>
             </div class="d-flex justify-content-center">
-                <button onclick="editEmp()" id="editBtn" class="btn btn-success"><i
-                        class="fa-solid fa-pencil"></i>&nbsp;Confirm Edit</button>
+                <button onclick="editEmp()" id="editBtn" class="btn btn-success"><i class="fa-solid fa-user-pen"></i>&nbsp;Confirm Edit</button>
             </form>
         </div>
     </div>

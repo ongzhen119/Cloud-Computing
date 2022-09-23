@@ -193,7 +193,7 @@ def apidelete(empid):
 
 @app.route("/", methods=['GET'])
 def home():
-    return render_template('Home.html')
+    return render_template('AddEmpForm.html')
 
 
 @app.route("/view", methods=['GET'])
