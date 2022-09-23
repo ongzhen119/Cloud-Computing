@@ -74,7 +74,7 @@ def apiadd():
         insert_sql = "INSERT INTO employee(first_name, last_name, salary, contact_num, office, profile_pic) VALUES (%s, %s, %s, %s, %s, null)"
         try:
             with db_conn.cursor() as cursor:
-                cursor.execute(insert_sql, (first_name, last_name, contact_num, salary, office))
+                cursor.execute(insert_sql, (first_name, last_name, salary, contact_num,  office))
                 # result = cursor.fetchone()
         
                 result = db_conn.commit()
