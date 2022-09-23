@@ -36,7 +36,6 @@ def apiget():
         db=customdb
     ) as db_conn:
         emp_id = request.args.get('empid')
-        print("hi")
         if emp_id is None:
             with db_conn.cursor(pymysql.cursors.DictCursor) as cursor:
                 sql = "SELECT * FROM employee"
@@ -144,11 +143,11 @@ def apiedit(emp_id):
         office = request.form.get('office')
         emp_image_file = request.files.get('emp_image_file')
 
-        update_sql = "UPDATE employee SET first_name=%s, last_name=%s, contact_num=%s, salary=%s, office=%s WHERE emp_id = %s"
+        update_sql = "UPDATE employee SET first_name=%s, last_name=%s,  salary=%s, contact_num=%s, office=%s WHERE emp_id = %s"
         try:
             with db_conn.cursor() as cursor:
                 cursor.execute(update_sql, (first_name,
-                                            last_name, contact_num, salary, office, emp_id))
+                                            last_name,  salary, contact_num, office, emp_id))
                 db_conn.commit()
         except Exception as e:
             return {"status": -1, "error": str(e)}
