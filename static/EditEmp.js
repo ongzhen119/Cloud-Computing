@@ -12,6 +12,7 @@ $(function () {
             $("select[name=office]").val(data.data.office);
             $("#loading_bar").css("display", "none");
             $("#edit_cont").css("display", "block");
+            $("#output").prop("src", `https://emp-image-ongzhenchun.s3.amazonaws.com/${data.data.profile_pic}`)
         },
         error: (jqXHR, textStatus, errorThrown) => {
             console.error(errorThrown);
@@ -57,10 +58,12 @@ function editEmp() {
     form_data.append("office", office);
     if ($("input[name=emp_image]")[0].files.length > 0) {
         form_data.append(
-            "profile_pic",
+            "emp_image_file",
             $("input[name=emp_image]")[0].files[0]
         );
     }
+
+    console.log($("input[name=emp_image]")[0].files[0]);
     let emp_id = $("input[name=name]").val();
     $.ajax({
         url: `/api/edit/${emp_id}`,

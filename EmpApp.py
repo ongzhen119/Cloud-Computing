@@ -1,3 +1,4 @@
+from email.mime import image
 from stat import UF_APPEND
 from flask import Flask, render_template, request, make_response
 from pymysql import connections
@@ -155,6 +156,7 @@ def apiedit(emp_id):
         if emp_image_file is not None:
             emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
             s3 = boto3.resource('s3')
+            print(emp_image_file_name_in_s3)
             try:
                 s3.Object(custombucket, emp_image_file_name_in_s3).delete()
                 s3.Bucket(custombucket).put_object(
